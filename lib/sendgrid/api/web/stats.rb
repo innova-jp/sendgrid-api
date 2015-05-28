@@ -25,11 +25,13 @@ module Sendgrid
           # @option options [String] :country Get stats for each region/state for the given country. Only US (United States) and CA (Canada) is supported at this time.
           # @return [Array<Entities::Stats>] An array of Entities::Stats object.
           def advanced(options = {})
-            perform_request(Entities::Stats, 'stats.getAdvanced.json', options)
+            perform_request(Entities::AdvancedStats, 'stats.getAdvanced.json', options)
           end
 
+          def get(options = {})
+            perform_request(Entities::GeneralStats, 'stats.get.json', options)
+          end
         end
-
       end
     end
   end
