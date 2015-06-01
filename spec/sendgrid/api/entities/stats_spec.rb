@@ -3,7 +3,28 @@ require 'spec_helper'
 module Sendgrid
   module API
     module Entities
-      describe Stats do
+      describe GeneralStats do
+        subject { described_class.new }
+
+        it { should respond_to(:date) }
+        it { should respond_to(:delivered) }
+        it { should respond_to(:unsubscribes) }
+        it { should respond_to(:invalid_email) }
+        it { should respond_to(:bounces) }
+        it { should respond_to(:repeat_unsubscribes) }
+        it { should respond_to(:unique_clicks) }
+        it { should respond_to(:blocked) }
+        it { should respond_to(:spam_drop) }
+        it { should respond_to(:repeat_bounces) }
+        it { should respond_to(:repeat_spamreports) }
+        it { should respond_to(:requests) }
+        it { should respond_to(:spamreports) }
+        it { should respond_to(:clicks) }
+        it { should respond_to(:opens) }
+        it { should respond_to(:unique_opens) }
+      end
+
+      describe AdvancedStats do
         subject { described_class.new }
 
         it { should respond_to(:delivered) }
