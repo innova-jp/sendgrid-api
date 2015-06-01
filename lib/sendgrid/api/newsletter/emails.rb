@@ -2,6 +2,7 @@ require 'sendgrid/api/service'
 require 'sendgrid/api/entities/email'
 require 'sendgrid/api/entities/response_insert'
 require 'sendgrid/api/entities/response_remove'
+require 'sendgrid/api/entities/response_count'
 require 'sendgrid/api/newsletter/utils'
 
 module Sendgrid
@@ -48,6 +49,16 @@ module Sendgrid
           def delete(list, emails)
             params = { :list => extract_listname(list), :email => map_emails(emails, :email) }
             perform_request(Entities::ResponseRemove, 'newsletter/lists/email/delete.json', params)
+          end
+
+          # Retrieve the number of entries on a list.
+          #
+          # @see https://sendgrid.com/docs/API_Reference/Marketing_Emails_API/emails.html#-count
+          # @param list [String, Entities::List] A list name or Entities::List object.
+          # @return [Entities::ResponseCount] An Entities::ResponseCount object.
+          def count(list)
+            params = { :list => extract_listname(list) }
+            perform_request(Entities::ResponseCount, 'newsletter/lists/email/count.json', params)
           end
 
           private
